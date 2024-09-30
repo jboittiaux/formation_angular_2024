@@ -1,5 +1,15 @@
-<lib-shared-components></lib-shared-components>
+@if (isLogged) {
+  <header>
+    <div>
+      Bonjour <b>{{ isLogged?.login }}</b> -
+      <a (click)="logout()">Logout</a>
+    </div>
 
-<app-nx-welcome></app-nx-welcome>
+    <app-navigation></app-navigation>
+  </header>
 
-<router-outlet></router-outlet>
+  <router-outlet></router-outlet>
+}
+@else {
+  <app-login></app-login>
+}

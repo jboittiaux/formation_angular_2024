@@ -1,0 +1,9 @@
+<h1>Liste des utilisateurs</h1>
+
+<ul>
+  @for (user of users; track $index) {
+    <li><a [routerLink]="[user.id]">{{ user.name }}</a></li>
+  }
+</ul>
+
+<router-outlet></router-outlet>
