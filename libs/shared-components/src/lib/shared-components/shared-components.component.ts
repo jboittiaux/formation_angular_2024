@@ -21,18 +21,15 @@ export class SharedComponentsComponent {
     ]),
   });
 
-  get isLogged() {
-    const logged = localStorage.getItem('logged');
+  get userLogged() {
+    const logged = localStorage.getItem('userLogged');
     return logged ? JSON.parse(logged) : null;
   }
 
   onSubmit() {
     if (this.form.valid) {
-      localStorage.setItem('logged', JSON.stringify(this.form.value));
+      localStorage.setItem('userLogged', JSON.stringify(this.form.value));
+      location.reload();
     }
-  }
-
-  logout() {
-    localStorage.removeItem('logged');
   }
 }

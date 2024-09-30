@@ -1,10 +1,4 @@
-@if (isLogged) {
-  <p>
-    Bonjour <b>{{ isLogged?.login }}</b> -
-    <a (click)="logout()">Logout</a>
-  </p>
-}
-@else {
+@if (!userLogged) {
   <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form">
     <div>
       <label for="login">Login</label>

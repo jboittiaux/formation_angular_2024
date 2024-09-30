@@ -12,4 +12,13 @@ import { SharedComponentsComponent } from '@my-workspace/shared-components';
 })
 export class AppComponent {
   title = 'my-angular';
+
+  get userLogged() {
+    const logged = localStorage.getItem('userLogged');
+    return logged ? JSON.parse(logged) : null;
+  }
+
+  logout() {
+    localStorage.removeItem('userLogged');
+  }
 }

@@ -12,13 +12,4 @@ import { LoginComponent } from './login/login.component';
 })
 export class AppComponent {
   title = 'dashboard';
-
-  get isLogged() {
-    const logged = localStorage.getItem('logged');
-    return logged ? JSON.parse(logged) : null;
-  }
-
-  logout() {
-    localStorage.removeItem('logged');
-  }
 }
