@@ -11,5 +11,5 @@ import { SharedComponentsComponent } from '@my-workspace/shared-components';
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  title = 'my-angular';
+  title = 'dashboard';
 }
