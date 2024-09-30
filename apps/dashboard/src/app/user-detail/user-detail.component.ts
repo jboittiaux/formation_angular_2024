@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, RouterModule } from '@angular/router';
-import { usersList } from '../user-list/user-list';
+import { User } from '../user-list/user-list';
+// import { usersList } from '../user-list/user-list';
 
 @Component({
   selector: 'app-user-detail',
@@ -11,11 +12,11 @@ import { usersList } from '../user-list/user-list';
   styleUrl: './user-detail.component.scss',
 })
 export class UserDetailComponent {
-  user!: any;
+  user!: User;
 
   constructor(private activatedRoute: ActivatedRoute) {
-    this.activatedRoute.params.subscribe((params) => {
-      this.user = usersList.find((user) => user.id == params['id']);
+    this.activatedRoute.data.subscribe((data) => {
+      this.user = data['user'];
     });
   }
 }

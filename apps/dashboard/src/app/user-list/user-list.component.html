@@ -4,6 +4,7 @@
   @for (user of users; track $index) {
     <li><a [routerLink]="[user.id]">{{ user.name }}</a></li>
   }
+  <li><a [routerLink]="'53'">User qui existe pas</a></li>
 </ul>
 
 <router-outlet></router-outlet>

@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { SharedComponentsComponent } from '@my-workspace/shared-components';
 import { NavigationComponent } from "./navigation/navigation.component";
 import { LoginComponent } from './login/login.component';
 

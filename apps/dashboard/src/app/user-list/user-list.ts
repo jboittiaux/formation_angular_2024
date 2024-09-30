@@ -1,4 +1,4 @@
-export const usersList = [
+export const usersList: User[] = [
   {
     "id": 1,
     "name": "John Doe",
@@ -34,4 +34,12 @@ export const usersList = [
     "age": 35,
     "role": "admin"
   }
-]
+];
+
+export interface User {
+  id: number;
+  name: string;
+  email: string;
+  age: number;
+  role: string;
+}
