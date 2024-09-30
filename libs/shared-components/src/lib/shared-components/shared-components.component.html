@@ -1,1 +1,31 @@
-<p>shared-components works!</p>
+@if (isLogged) {
+  <p>
+    Bonjour <b>{{ isLogged?.login }}</b> -
+    <a (click)="logout()">Logout</a>
+  </p>
+}
+@else {
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form">
+    <div>
+      <label for="login">Login</label>
+      <input type="text" id="login" formControlName="login" />
+
+      @if (form.get('login')?.invalid && form.get('login')?.touched) {
+        <div class="error">Login is required</div>
+      }
+    </div>
+
+    <div>
+      <label for="password">Password</label>
+      <input type="password" id="password" formControlName="password" />
+
+      @if (form.get('password')?.invalid && form.get('password')?.touched) {
+        <div class="error">Password is required</div>
+      }
+    </div>
+
+    <div class="btn-container">
+      <button type="submit" [disabled]="!form.valid">Submit</button>
+    </div>
+  </form>
+}
