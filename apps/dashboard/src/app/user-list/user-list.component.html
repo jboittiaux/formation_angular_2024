@@ -2,8 +2,15 @@
 
 <h1>Liste des utilisateurs</h1>
 
+<form [formGroup]="searchForm">
+  <div>
+    <label for="search">Recherche par nom</label>
+    <input type="text" id="search" formControlName="search" />
+  </div>
+</form>
+
 <ul>
-  @for (user of users; track $index) {
+  @for (user of usersFiltered; track $index) {
     <li><a [routerLink]="[user.id]">{{ user.name }}</a></li>
   }
   <li><a [routerLink]="'53'">User qui existe pas</a></li>
