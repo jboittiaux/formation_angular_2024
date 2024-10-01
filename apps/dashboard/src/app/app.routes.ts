@@ -5,8 +5,15 @@ import { HomeComponent } from './home/home.component';
 import { UserResolver } from './resolvers/user.resolver';
 import { authGuard, authGuardChild } from './guards/auth.guard';
 import { LoginComponent } from './login/login.component';
+import { TestFormComponent } from './test-form/test-form.component';
+import { formGuard } from './guards/form.guard';
 
 export const appRoutes: Route[] = [
+  {
+    path: '',
+    redirectTo: 'home',
+    pathMatch: 'full',
+  },
   {
     path: 'login',
     component: LoginComponent,
@@ -31,4 +38,9 @@ export const appRoutes: Route[] = [
       },
     ],
   },
+  {
+    path: 'test-form',
+    component: TestFormComponent,
+    canDeactivate: [formGuard],
+  }
 ];
