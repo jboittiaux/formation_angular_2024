@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, EventEmitter, inject, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 
@@ -10,6 +10,8 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
   styleUrl: './shared-components.component.scss',
 })
 export class SharedComponentsComponent {
+  @Output() onSubmit: EventEmitter<{ login: string, password: string }> = new EventEmitter();
+
   private fb = inject(FormBuilder);
 
   form = this.fb.group({
@@ -26,10 +28,12 @@ export class SharedComponentsComponent {
     return logged ? JSON.parse(logged) : null;
   }
 
-  onSubmit() {
+  handleSubmit() {
     if (this.form.valid) {
-      localStorage.setItem('userLogged', JSON.stringify(this.form.value));
-      location.reload();
+      this.onSubmit.emit({
+        login: this.form.get('login')?.value ?? '',
+        password: this.form.get('password')?.value ?? '',
+      });
     }
   }
 }

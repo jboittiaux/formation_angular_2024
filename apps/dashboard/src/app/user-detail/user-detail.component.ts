@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, RouterModule } from '@angular/router';
-import { User } from '../user-list/user-list';
-// import { usersList } from '../user-list/user-list';
+import { User } from '../services/user-list';
 
 @Component({
   selector: 'app-user-detail',

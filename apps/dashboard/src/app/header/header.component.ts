@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NavigationComponent } from '../navigation/navigation.component';
+import { AuthService } from '../services/auth.service';
+import { User } from '../services/user-list';
 
 @Component({
   selector: 'app-header',
@@ -9,14 +11,20 @@ import { NavigationComponent } from '../navigation/navigation.component';
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })
-export class HeaderComponent {
-  get userLogged() {
-    const userLogged = localStorage.getItem('userLogged');
-    return userLogged ? JSON.parse(userLogged) : null;
+export class HeaderComponent implements OnInit {
+  authService: AuthService = inject(AuthService);
+
+  user!: User;
+
+  ngOnInit() {
+    this.authService.getUser().subscribe((user) => {
+      if (user !== null) {
+        this.user = user;
+      }
+    })
   }
 
   logout() {
-    localStorage.removeItem('userLogged');
-    location.href = 'login';
+    this.authService.logout();
   }
 }
