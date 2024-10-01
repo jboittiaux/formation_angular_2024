@@ -1,16 +1,12 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { ActivatedRoute, RouterModule } from '@angular/router';
-import { User } from '../services/user-list';
-import { HeaderComponent } from '../header/header.component';
-import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { User } from '../../../services/user-list';
+import { FormBuilder } from '@angular/forms';
 import { debounceTime } from 'rxjs';
-import { UserService } from '../services/user.service';
+import { UserService } from '../../../services/user.service';
 
 @Component({
   selector: 'app-user-list',
-  standalone: true,
-  imports: [CommonModule, HeaderComponent, ReactiveFormsModule, RouterModule],
   templateUrl: './user-list.component.html',
   styleUrl: './user-list.component.scss',
 })

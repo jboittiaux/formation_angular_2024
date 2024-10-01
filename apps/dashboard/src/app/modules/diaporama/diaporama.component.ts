@@ -1,8 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { HeaderComponent } from '../header/header.component';
 import { Subscription, timer } from 'rxjs';
-import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 
 interface Image {
   url: string;
@@ -10,8 +8,6 @@ interface Image {
 
 @Component({
   selector: 'app-diaporama',
-  standalone: true,
-  imports: [CommonModule, HeaderComponent, ReactiveFormsModule],
   templateUrl: './diaporama.component.html',
   styleUrl: './diaporama.component.scss',
 })
@@ -49,11 +45,17 @@ export class DiaporamaComponent implements OnInit {
         this.imageSize = values.size ?? 300;
         this.transitionTime = values.transitionTime ?? 1000;
 
-        this.timer?.unsubscribe();
-        this.timer = timer(this.transitionTime, this.transitionTime).subscribe(() => {
-          this.currentImage = this.images[(this.images.indexOf(this.currentImage) + 1) % this.images.length];
-        });
+        this.start();
       },
+    });
+
+    this.start();
+  }
+
+  start() {
+    this.timer?.unsubscribe();
+    this.timer = timer(this.transitionTime, this.transitionTime).subscribe(() => {
+      this.currentImage = this.images[(this.images.indexOf(this.currentImage) + 1) % this.images.length];
     });
   }
 }

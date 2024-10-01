@@ -1,13 +1,9 @@
 import { Route } from '@angular/router';
-import { UserListComponent } from './user-list/user-list.component';
-import { UserDetailComponent } from './user-detail/user-detail.component';
 import { HomeComponent } from './home/home.component';
-import { UserResolver } from './resolvers/user.resolver';
-import { authGuard, authGuardChild } from './guards/auth.guard';
+import { authGuard } from './guards/auth.guard';
 import { LoginComponent } from './login/login.component';
 import { TestFormComponent } from './test-form/test-form.component';
 import { formGuard } from './guards/form.guard';
-import { DiaporamaComponent } from './diaporama/diaporama.component';
 
 export const appRoutes: Route[] = [
   {
@@ -26,26 +22,18 @@ export const appRoutes: Route[] = [
   },
   {
     path: 'users',
-    component: UserListComponent,
+    loadChildren: () => import('./modules/user/user.module').then(m => m.UserModule),
     canActivate: [authGuard],
-    canActivateChild: [authGuardChild],
-    children: [
-      {
-        path: ':id',
-        component: UserDetailComponent,
-        resolve: {
-          user: UserResolver,
-        },
-      },
-    ],
   },
   {
     path: 'test-form',
     component: TestFormComponent,
+    canActivate: [authGuard],
     canDeactivate: [formGuard],
   },
   {
     path: 'diaporama',
-    component: DiaporamaComponent,
+    loadChildren: () => import('./modules/diaporama/diaporama.module').then(m => m.DiaporamaModule),
+    canActivate: [authGuard],
   }
 ];

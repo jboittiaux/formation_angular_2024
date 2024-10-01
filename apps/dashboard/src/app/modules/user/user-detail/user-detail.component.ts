@@ -1,12 +1,9 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { ActivatedRoute, RouterModule } from '@angular/router';
-import { User } from '../services/user-list';
+import { ActivatedRoute } from '@angular/router';
+import { User } from '../../../services/user-list';
 
 @Component({
   selector: 'app-user-detail',
-  standalone: true,
-  imports: [CommonModule, RouterModule],
   templateUrl: './user-detail.component.html',
   styleUrl: './user-detail.component.scss',
 })

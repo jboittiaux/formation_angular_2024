@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { DiaporamaComponent } from './diaporama.component';
+import { DiaporamaComponent } from './diaporama/diaporama.component';
 
 describe('DiaporamaComponent', () => {
   let component: DiaporamaComponent;
