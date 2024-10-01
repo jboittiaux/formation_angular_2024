@@ -4,6 +4,7 @@ import { authGuard } from './guards/auth.guard';
 import { LoginComponent } from './login/login.component';
 import { TestFormComponent } from './test-form/test-form.component';
 import { formGuard } from './guards/form.guard';
+import { TestPipeComponent } from './test-pipe/test-pipe.component';
 
 export const appRoutes: Route[] = [
   {
@@ -35,5 +36,10 @@ export const appRoutes: Route[] = [
     path: 'diaporama',
     loadChildren: () => import('./modules/diaporama/diaporama.module').then(m => m.DiaporamaModule),
     canActivate: [authGuard],
-  }
+  },
+  {
+    path: 'test-pipe',
+    component: TestPipeComponent,
+    canActivate: [authGuard],
+  },
 ];

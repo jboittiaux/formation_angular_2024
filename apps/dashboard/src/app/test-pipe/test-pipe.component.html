@@ -1,0 +1,20 @@
+<app-header></app-header>
+
+<h1>Test Pipe</h1>
+
+<div>
+  <label for="test">Champ</label>
+  <input type="text" id="test" [(ngModel)]="test" />
+</div>
+
+<p>{{ test }}</p>
+
+<ol>
+  @for (value of values; track $index) {
+    <li>
+      {{ value }}
+      ->
+      {{ value | formule }}
+    </li>
+  }
+</ol>
