@@ -7,6 +7,7 @@ import { authGuard, authGuardChild } from './guards/auth.guard';
 import { LoginComponent } from './login/login.component';
 import { TestFormComponent } from './test-form/test-form.component';
 import { formGuard } from './guards/form.guard';
+import { DiaporamaComponent } from './diaporama/diaporama.component';
 
 export const appRoutes: Route[] = [
   {
@@ -42,5 +43,9 @@ export const appRoutes: Route[] = [
     path: 'test-form',
     component: TestFormComponent,
     canDeactivate: [formGuard],
+  },
+  {
+    path: 'diaporama',
+    component: DiaporamaComponent,
   }
 ];

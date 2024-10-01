@@ -1,0 +1,19 @@
+<app-header></app-header>
+
+<h1>Diaporama</h1>
+
+<form [formGroup]="form">
+  <div>
+    <label for="size">Taille de l'image</label>
+    <input type="range" min="100" max="800" step="100" id="size" formControlName="size" />
+    {{ imageSize }}
+  </div>
+
+  <div>
+    <label for="transitionTime">Duree de transition</label>
+    <input type="range" min="300" max="5000" step="300" id="transitionTime" formControlName="transitionTime" />
+    {{ transitionTime / 1000 }}s
+  </div>
+</form>
+
+<img src="{{ currentImage.url }}" alt="" width="{{ imageSize }}">
